@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNGITECH MUSHROOMS - Training, Support & Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f9f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR WITH LOGO */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #4d4b40; /* Mushroom green */
+            color: white;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .logo img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 55px; /* Logo height in navbar */
+            width: auto;
+            background: white; /* makes logo pop on green bg */
+            padding: 0px;
+            border-radius: 30px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #c8e6c9;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: url('IMG-20260817-WA0009.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 200px 20px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+           background: #4d4b40;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            background: #1a0d01;
+            transform: scale(1.05);
+        }
+
+        /* SECTION */
+        section {
+            padding: 60px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #5f350d;
+            margin-bottom: 30px;
+        }
+
+          .products-section { padding: 50px 5%; max-width: 1300px; margin: 0 auto; }
+  .section-title { text-align: center; font-size: 36px; color: #3E2723; margin-bottom: 40px; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .product-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+  .product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #e0e0e0;
+  }
+  .product-content { padding: 20px; flex-grow: 1; }
+  .product-content h3 { color: #3E2723; font-size: 18px; margin-bottom: 10px; }
+  .product-content ul { list-style: none; padding-left: 0; font-size: 14px; color: #555; }
+  .product-content ul li { padding: 3px 0 3px 18px; position: relative; }
+  .product-content ul li:before { content: "•"; color: #8b5712; position: absolute; left: 0; }
+
+  .order-btn {
+    background: #4d4b40;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .order-btn:hover { background: #030303; }
+
+  @media (max-width: 768px) {
+    .section-title { font-size: 28px; }
+  }
+
+   .services-section { padding: 50px 5%; max-width: 1300px; margin: 0 auto; }
+  .section-title { text-align: center; font-size: 36px; color: #3E2723; margin-bottom: 40px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .service-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+  .service-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #e0e0e0;
+  }
+  .service-content { padding: 20px; flex-grow: 1; }
+  .service-content h3 { color: #3E2723; font-size: 18px; margin-bottom: 10px; }
+
+  @media (max-width: 768px) {
+    .section-title { font-size: 28px; }
+  }
+
+        /* MOVING PICTURES SLIDER */
+        .slider {
+            width: 75%;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slides {
+            display: flex;
+            width: 400%; /* 4 images */
+            animation: slide 12s infinite;
+        }
+
+        .slides img {
+            width: 25%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            20% { transform: translateX(0%); }
+            25% { transform: translateX(-25%); }
+            45% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); }
+            70% { transform: translateX(-50%); }
+            75% { transform: translateX(-75%); }
+            95% { transform: translateX(-75%); }
+            100% { transform: translateX(0%); }
+        }
+
+     /* CONTACT BAR */
+    .contact-bar {
+     background: #3E2723;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      word-wrap: break-word;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #212121;
+      color: #fff;
+      padding: 30px 50px;
+      text-align: center;
+    }
+    footer .logo-footer { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+    footer .logo-footer img { width: 45px; border-radius: 50%; }
+    .socials { margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .socials a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .socials a:hover { color: blue; }
+    footer p { font-size: 13px; color: #ccc; }
+
+    @media (max-width: 768px) {
+      header{
+        padding: 15px 20px;
+        justify-content: center;
+        gap: 10px;
+      }
+      .logo {font-size: 18px;}
+      .logo img {width: 35px; height: 35px;}
+
+      nav {gap: 15px; font-size: 14px;}
+      .slider, .slides img {height: 400px;}
+
+      .hero-text {
+        padding: 20px;
+        width: 95%;
+      }
+      .hero-text h1 {font-size: 28px;}
+      .hero-text p {font-size: 15px;}
+      .btn {padding: 12px 25px; font-size: 14px;}
+
+      .ceo-img {width: 70px; height: 70px;}
+      .contact-bar {font-size: 12px;}
+
+      footer {padding: 30px 20px;}
+      .socials {gap: 15px; font-size: 14px;}
+
+      @media (max-width: 480px) {
+        .hero-text h1 {font-size: 24px;}
+        nav {gap: 10px;}
+      }
+    }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <!-- ADD YOUR LOGO HERE -->
+                    <img src="IMG-20260904-WA0025.jpg" alt="FUNGITECH Logo" class="logo-img">
+                    <div class="logo-text">FUNGITECH</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About Us.html">About Us</a></li>
+                    <li><a href="Poducts.html">Products</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>OUR PRODUCTS & SERVICES</h1>
+            <p><h3>Training | Support | Innovation</h3></p>
+        </div>
+    </section>
+
+
+   <!--<div class ="button-group">
+         <center><a href="About Us.html" class="btn1">Who we are?</a>
+         <a href="About Us.html" class="btn1">What we do?</a>
+         </center>
+    </div>-->
+
+     <!-- PRODUCTS SECTION -->
+  <section class="products-section">
+    <h2 class="section-title">Our Goods & Products</h2>
+    <div class="products-grid">
+
+      <!-- 1 -->
+      <div class="product-card">
+        <img src="IMG-20260914-WA0003.jpg" alt="Mushroom Spawn" class="product-img">
+        <div class="product-content">
+          <h3>1. High quality mother Spawn</h3>
+          <p>High quality oyster and button mushroom spawn for fast colonization.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Spawn')">Order Now</button>
+      </div>
+
+      <!-- 2 -->
+      <div class="product-card">
+        <img src="substrate.jpg" alt="Substrates" class="product-img">
+        <div class="product-content">
+          <h3>2. Substrates</h3>
+          <ul>
+            <li>Cotton husk</li>
+            <li>Sunflower husk</li>
+            <li>Wheat straws</li>
+            <li>Corncobs</li>
+            <li>Hardwood sawdust</li>
+          </ul>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Substrates')">Order Now</button>
+      </div>
+
+      <!-- 3 -->
+      <div class="product-card">
+        <img src="bailing-bag.jpg" alt="Bailing Bags" class="product-img">
+        <div class="product-content">
+          <h3>3. Bailing Bags</h3>
+          <p>Durable bags for substrate packing and mushroom cultivation.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Bailing Bags')">Order Now</button>
+      </div>
+
+      <!-- 4 -->
+      <div class="product-card">
+        <img src="lime.jpg" alt="Hydrated Lime" class="product-img">
+        <div class="product-content">
+          <h3>4. Hydrated Lime</h3>
+          <p>For substrate treatment and pH adjustment.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Hydrated Lime')">Order Now</button>
+      </div>
+
+      <!-- 5 -->
+      <div class="product-card">
+        <img src="chlorine.jpg" alt="Chlorine" class="product-img">
+        <div class="product-content">
+          <h3>5. Chlorine</h3>
+          <p>For sterilization and hygiene in the grow room.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Chlorine')">Order Now</button>
+      </div>
+
+      <!-- 6 -->
+      <div class="product-card">
+        <img src="formalin.jpg" alt="Formalin" class="product-img">
+        <div class="product-content">
+          <h3>6. Formalin</h3>
+          <p>Disinfectant for equipment and growing areas.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Formalin')">Order Now</button>
+      </div>
+
+      <!-- 7 -->
+      <div class="product-card">
+        <img src="compost.jpg" alt="Compost" class="product-img">
+        <div class="product-content">
+          <h3>7. Compost</h3>
+          <p>Prepared compost for button mushroom production.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Compost')">Order Now</button>
+      </div>
+
+      <!-- 8 -->
+      <div class="product-card">
+        <img src="123696e6-119f-4a83-b7b4-24b364402f4b.jpg" alt="Mushroom Drying Machine" class="product-img">
+        <div class="product-content">
+          <h3>8. Mushroom Drying Machines</h3>
+          <p>Electric dryers for preserving mushrooms.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Mushroom Drying Machine')">Order Now</button>
+      </div>
+
+      <!-- 9 -->
+      <div class="product-card">
+        <img src="watering.jpg" alt="Watering System" class="product-img">
+        <div class="product-content">
+          <h3>9. Watering System</h3>
+          <p>Both electric and non-electric misting systems for humidity control.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Watering System')">Order Now</button>
+      </div>
+
+      <!-- 10 -->
+      <div class="product-card">
+        <img src="guide.jpg" alt="Farming Guide" class="product-img">
+        <div class="product-content">
+          <h3>10. Mushroom Farming Guides</h3>
+          <p>Step by step manuals for beginners and commercial farmers.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Farming Guide')">Order Now</button>
+      </div>
+
+      <!-- 11 -->
+      <div class="product-card">
+        <img src="twine.jpg" alt="T2 Bailing Twine" class="product-img">
+        <div class="product-content">
+          <h3>11. T2 Bailing Twine</h3>
+          <p>Strong twine for tying bags and bales.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('T2 Bailing Twine')">Order Now</button>
+      </div>
+
+      <!-- 12 -->
+      <div class="product-card">
+        <img src="IMG-20260914-WA0001.jpg" alt="Ready to Fruit Kit" class="product-img">
+        <div class="product-content">
+          <h3>12. Ready to Fruit Kits</h3>
+          <p>Pre-inoculated kits for instant home mushroom growing.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Ready to Fruit Kit')">Order Now</button>
+      </div>
+
+      <!-- 13 -->
+      <div class="product-card">
+        <img src="IMG-20260914-WA0004.jpg" alt="Ready to Fruit Bucket" class="product-img">
+        <div class="product-content">
+          <h3>13. Ready to Fruit Buckets</h3>
+          <p>Grow mushrooms directly from buckets. No experience needed.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Ready to Fruit Bucket')">Order Now</button>
+      </div>
+
+      <!-- 14 -->
+      <div class="product-card">
+        <img src="IMG-20260914-WA0002.jpg" alt="Hygro Thermometer" class="product-img">
+        <div class="product-content">
+          <h3>14. Hygro-Thermometer</h3>
+          <p>Monitor temperature and humidity in your grow room.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('Hygro-Thermometer')">Order Now</button>
+      </div>
+
+      <!-- 15 -->
+      <div class="product-card">
+        <img src="ph-meter.jpg" alt="pH Testing Machine" class="product-img">
+        <div class="product-content">
+          <h3>15. pH Testing Machine</h3>
+          <p>3-in-1 tester for pH, Light, and Moisture levels.</p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('pH Testing Machine')">Order Now</button>
+      </div>
+
+      <!-- 16 -->
+      <div class="product-card">
+        <img src="IMG-20260914-WA0008.jpg" alt="pH Testing Machine" class="product-img">
+        <div class="product-content">
+          <h3>16. Mugroom Crisps</h3>
+          <p></p>
+        </div>
+        <button class="order-btn" onclick="orderProduct('pH Testing Machine')">Order Now</button>
+      </div>
+
+
+    </div>
+  </section>
+
+   <!-- SERVICES SECTION -->
+  <section class="services-section">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+
+      <!-- 1 -->
+      <div class="service-card">
+        <img src="IMG-20260914-WA0005.jpg" alt="Training" class="service-img">
+        <div class="service-content">
+          <h3>1. Training</h3>
+          <p></p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-card">
+        <img src="IMG-20260914-WA0006.jpg" alt="Consultation" class="service-img">
+        <div class="service-content">
+          <h3>2. Consultation</h3>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-card">
+        <img src="IMG-20260914-WA0007.jpg" alt="PM & M" class="service-img">
+        <div class="service-content">
+          <h3>3. Project Monitoring and Management</h3>
+        </div>
+      </div>
+</div>
+</section>
+
+<script>
+  function orderProduct(productName) {
+    // Change this to your WhatsApp number
+    let phone = "263785453982";
+    let message = `Hello! FUNGITECH MUSHROOMS, I would like to order: ${productName}`;
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+
+    <!-- Gallery.MOVING PICTURES -->
+    <section id="gallery">
+        <div class="container">
+            <h2>Our Farm Gallery</h2>
+            <div class="slider">
+                <div class="slides">
+                    <img src="IMG-20260817-WA0003.jpg" alt="Mushroom Farm 1">
+                    <img src="IMG-20260817-WA0006.jpg" alt="Mushroom Farm 2">
+                    <img src="IMG-20260817-WA0007.jpg" alt="Mushroom Farm 3">
+                    <img src="IMG-20260817-WA0009.jpg" alt="Mushroom Farm 4">
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!--CONTACT INFO BAR-->
+  <div class="contact-bar">
+    📍 INKOMO FARM, Harare, Zimbabwe | 📞 +263 785 453 982 | ✉️ tatendagumb2@gmail.com
+  </div>
+
+    <!-- FOOTER -->
+  <footer>
+    <div class="logo-footer">
+      <img src="IMG-20260904-WA0025.jpg" alt="Fungitech Logo">
+      <h3>FUNGITECH MUSHROOMS</h3>
+    </div>
+    <p>Training | Support | Innovation</p>
+    
+    <div class="socials">
+      <a href="https://www.facebook.com/FungiTechMushrooms" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@fungitech_mushrooms_co?_r=1&_t=ZS-97MSewiqqtI⁠" target="_blank">TikTok</a>
+      <a href="https://whatsapp.com/channel/0029VaKz2jcGufIzAN1phi0D" target="_blank">WhatsApp Channel</a>
+    </div>
+    <p>© 2026 FUNGITECH. All Rights Reserved.</p>
+  </footer>
+
+
+</body>
+</html>

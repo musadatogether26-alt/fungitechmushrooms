@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNGITECH MUSHROOMS - Training, Support & Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR WITH LOGO */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #4d4b40; /* Mushroom green */
+            color: white;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .logo img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+
+      
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 55px; /* Logo height in navbar */
+            width: auto;
+            background: white; /* makes logo pop on green bg */
+            padding: 0px;
+            border-radius: 30px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+         nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #c8e6c9;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: url('IMG-20260817-WA0023.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 200px 20px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+         .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+         .intro-text {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* EXPLORE MORE BUTTON */
+  .explore-btn {
+    background: #3E2723;
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px auto 50px;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .explore-btn:hover { 
+    background: #050505; 
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+  }
+
+  /* GRADES SECTION */
+  .grades-section { padding: 50px 5%; max-width: 1400px; margin: 0 auto; }
+  .section-title { font-size: 36px; color: #3E2723; margin-bottom: 40px; }
+
+  .grades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .grade-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+    transition: 0.3s;
+    text-align: left;
+  }
+  .grade-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+  /* KEY FIX: Make images clear and show full image */
+  .grade-img {
+    width: 100%;
+    height: auto; /* remove fixed height */
+    max-height: 250px; /* optional max height */
+    object-fit: contain; /* shows full image without cropping */
+    background: #f0f0f0; /* light bg for empty space */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .grade-card h3 { 
+    color: #3E2723; 
+    font-size: 20px; 
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .grade-card h4 {
+    color: #3E2723;;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .grade-card ul { 
+    list-style: none; 
+    padding-left: 0; 
+    font-size: 13px; 
+    color: grey; 
+    line-height: 1.6;
+  }
+  .grade-card ul li { padding: 3px 0 3px 18px; position: relative; }
+  .grade-card ul li:before { content: "•"; color: #181104; position: absolute; left: 0; }
+
+  @media (max-width: 768px) {
+    .section-title { font-size: 28px; }
+    .explore-btn { padding: 12px 25px; font-size: 15px; }
+  }
+
+        /* SECTION */
+        section {
+            padding: 60px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #5f350d;
+            margin-bottom: 30px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+            text-align: center;
+        }
+
+        /* PRODUCTS GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            padding: 15px;
+            color: #a8760b;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            20% { transform: translateX(0%); }
+            25% { transform: translateX(-25%); }
+            45% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); }
+            70% { transform: translateX(-50%); }
+            75% { transform: translateX(-75%); }
+            95% { transform: translateX(-75%); }
+            100% { transform: translateX(0%); }
+        }*/
+
+     /* CONTACT BAR */
+    .contact-bar {
+     background: #0f0f0f;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      word-wrap: break-word;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #212121;
+      color: #fff;
+      padding: 30px 50px;
+      text-align: center;
+    }
+    footer .logo-footer { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+    footer .logo-footer img { width: 45px; border-radius: 50%; }
+    .socials { margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .socials a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .socials a:hover { color: blue; }
+    footer p { font-size: 13px; color: #ccc; }
+
+      @media (max-width: 768px) {
+      header{
+        padding: 15px 20px;
+        justify-content: center;
+        gap: 10px;
+      }
+      .logo {font-size: 18px;}
+      .logo img {width: 35px; height: 35px;}
+
+      nav {gap: 15px; font-size: 14px;}
+      .slider, .slides img {height: 400px;}
+
+      .hero-text {
+        padding: 20px;
+        width: 95%;
+      }
+      .hero-text h1 {font-size: 28px;}
+      .hero-text p {font-size: 15px;}
+      .btn {padding: 12px 25px; font-size: 14px;}
+
+      .ceo-img {width: 70px; height: 70px;}
+      .contact-bar {font-size: 12px;}
+
+      footer {padding: 30px 20px;}
+      .socials {gap: 15px; font-size: 14px;}
+
+      @media (max-width: 480px) {
+        .hero-text h1 {font-size: 24px;}
+        nav {gap: 10px;}
+      }
+    }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <!-- ADD YOUR LOGO HERE -->
+                    <img src="IMG-20260904-WA0025.jpg" alt="FUNGITECH Logo" class="logo-img">
+                    <div class="logo-text">FUNGITECH</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About Us.html">About Us</a></li>
+                    <li><a href="Products.html">Products</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Training | Support  Innovation</h1>
+            <p>Zimbabwe's leading supplier of premium oyster and button mushrooms</p>
+           
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Fungitech</h2>
+            <p>
+                FUNGITECH MUSHROOMS is dedicated to producing high-quality, organic mushrooms using modern technology. 
+                We empower farmers and provide healthy, nutritious food to communities across Zimbabwe. 
+                From spawn production to cultivation training, we are your one-stop mushroom solution.
+            </p>
+            <p>It is also committed to creating the optimal environment for mushroom farmers to thrive and succeed. 
+               Our mission is to empower farmers with the knowledge, resources, 
+               and support needed to build and grow prosperous mushroom farming businesses.
+            </p>
+        </div>
+    </section>
+
+     <!-- INTRO TEXT -->
+  <div class="intro-text">
+    Healthy, nutritious food to communities across Zimbabwe. From spawn production to cultivation training, we are your one-stop mushroom solution. 
+    It is also committed to creating the optimal environment for mushroom farmers to thrive and succeed. Our mission is to empower farmers with the 
+    knowledge, resources, and support needed to build and grow prosperous mushroom farming businesses.
+  </div>
+
+  <!-- EXPLORE MORE BUTTON -->
+  <center><button class="explore-btn" onclick="exploreMore()">
+    Explore More ->
+  </button>
+  </center>
+
+  <!-- GRADES SECTION -->
+  <section class="grades-section">
+    <h2 class="section-title">Our Grades & Mushroom Types</h2>
+    <div class="grades-grid">
+
+      <!-- 1 -->
+      <div class="product-card grade-card">
+        <img src="IMG-20260817-WA0039~2.jpg" alt="Blue Oyster Mushrooms" class="grade-img">
+        <h3>Blue Oyster Mushrooms</h3>
+        <h4>Ideal For</h4>
+        <ul>
+          <li>Commercial production</li>
+          <li>Gourmet restaurants</li>
+          <li>Farmers markets</li>
+          <li>Specialty retailers</li>
+        </ul>
+        <h4>Growing Characteristics</h4>
+        <ul>
+          <li>Rapid colonization</li>
+          <li>Excellent biological efficiency</li>
+          <li>Performs best in cooler fruiting conditions</li>
+        </ul>
+        <h4>Fruiting Temperature</h4>
+        <p style="font-size:13px;">10-18°C</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="product-card grade-card">
+        <img src="IMG-20260817-WA0040~2.jpg" alt="Pink Oyster Mushrooms" class="grade-img">
+        <h3>Pink Oyster Mushrooms</h3>
+        <h4>Ideal For</h4>
+        <ul>
+          <li>Warm-weather production</li>
+          <li>Gourmet restaurants</li>
+          <li>Farmers markets</li>
+          <li>Premium fresh sales</li>
+        </ul>
+        <h4>Growing Characteristics</h4>
+        <ul>
+          <li>Extremely fast colonization</li>
+          <li>Heat and warm-weather performer</li>
+          <li>High productivity</li>
+        </ul>
+        <h4>Fruiting Temperature</h4>
+        <p style="font-size:13px;">25-30°C</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="product-card grade-card">
+        <img src="IMG-20260817-WA0041~2.jpg" alt="Golden Oyster Mushroom" class="grade-img">
+        <h3>Golden Oyster Mushroom</h3>
+        <h4>Ideal For</h4>
+        <ul>
+          <li>Gourmet restaurants</li>
+          <li>Premium retailers</li>
+          <li>Farmers markets</li>
+          <li>Specialty mushroom producers</li>
+        </ul>
+        <h4>Growing Characteristics</h4>
+        <ul>
+          <li>Fast colonization</li>
+          <li>Produces beautiful cascading clusters</li>
+          <li>Requires good fresh air exchange</li>
+        </ul>
+        <h4>Fruiting Temperature</h4>
+        <p style="font-size:13px;">18-24°C</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="product-card grade-card">
+        <img src="IMG-20260817-WA0043~2.jpg" alt="Phoenix Oyster Mushroom" class="grade-img">
+        <h3>Phoenix Oyster Mushroom</h3>
+        <h4>Ideal For</h4>
+        <ul>
+          <li>Commercial cultivation</li>
+          <li>Year-round mushroom farms</li>
+          <li>Fresh market sales</li>
+        </ul>
+        <h4>Growing Characteristics</h4>
+        <ul>
+          <li>Heat tolerant</li>
+          <li>Excellent yield potential</li>
+          <li>Adapts to various substrates</li>
+        </ul>
+        <h4>Fruiting Temperature</h4>
+        <p style="font-size:13px;">20-28°C</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="product-card grade-card">
+        <img src="IMG-20260817-WA0042~2.jpg" alt="Grey Oyster Mushroom" class="grade-img">
+        <h3>Grey Oyster Mushroom</h3>
+        Grey oyster is one of the world's most widely cultivated<br>
+        gourment mushrooms, valued for its vigous growth, excellent yields<br>
+        and adaptability to a wide range of growing conditions.
+        <h4>Ideal For</h4>
+        <ul>
+          <li>Commercial mushroom farms</li>
+          <li>Small-scale growers</li>
+          <li>First-time cultivators</li>
+          <li>Fresh market sales</li>
+        </ul>
+        <h4>Growing Characteristics</h4>
+        <ul>
+          <li>Fast colonisation</li>
+          <li>High biological efficiency</li>
+          <li>Reliable and consistent yield</li>
+          <li>Excellent contamination reistance</li>
+          <li>Perfoms well on straw, juncao, hardwood sawdust and other cellulose-rich substrates</li>
+
+        </ul>
+        <h4>Fruiting Temperature</h4>
+        <p style="font-size:13px;">12-20°C</p>
+
+        <h4>Flavor</h4>
+        <p style="font-size:13px;">Rich, savoury and meaty with excellent umami flavour</p>
+      </div>
+
+
+    </div>
+  </section>
+
+<script>
+  function exploreMore() {
+    // OPTION 1: Scroll to products section
+    // document.querySelector('.grades-section').scrollIntoView({ behavior: 'smooth' });
+
+    // OPTION 2: Go to Products page
+    window.location.href = "Products.html"; 
+
+    // OPTION 3: Show alert
+    // alert("More products coming soon!");
+  }
+</script>
+    
+      <!-- CONTACT INFO BAR -->
+      <center>
+  <div class="contact-bar">
+    📍 INKOMO FARM, Harare, Zimbabwe | 📞 +263 785 453 982 | ✉️ tatendagumb2@gmail.com
+  </div>
+    </center>
+
+      <!-- FOOTER -->
+  <footer>
+    <div class="logo-footer">
+      <img src="IMG-20260904-WA0025.jpg" alt="Fungitech Logo">
+      <h3>FUNGITECH MUSHROOMS</h3>
+    </div>
+    <p>Training | Support | Innovation</p>
+    
+    <div class="socials">
+      <a href="https://www.facebook.com/FungiTechMushrooms" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@fungitech_mushrooms_co?_r=1&_t=ZS-97MSewiqqtI⁠" target="_blank">TikTok</a>
+      <a href="https://whatsapp.com/channel/0029VaKz2jcGufIzAN1phi0D" target="_blank">WhatsApp Channel</a>
+    </div>
+    <p>© 2026 FUNGITECH. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNGITECH MUSHROOMS - Grow Fresh. Eat Healthy.</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #f8f8f8; color: #333; }
+
+    /* HEADER */
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #3E2723;
+      padding: 15px 50px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .logo img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+    
+    nav {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #A5D6A7; }
+
+    /* SLIDER */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      width: 500%;
+      animation: slide 20s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% { margin-left: 0; }
+      20% { margin-left: 0; }
+      25% { margin-left: -100%; }
+      45% { margin-left: -100%; }
+      50% { margin-left: -200%; }
+      70% { margin-left: -200%; }
+      75% { margin-left: -300%; }
+      95% { margin-left: -300%; }
+      100% { margin-left: -400%; }
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+    }
+    .hero-text h1 { font-size: 40px; margin-bottom: 10px; }
+    .hero-text p { font-size: 18px; margin-bottom: 20px; }
+    .btn {
+      background: #212121;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .btn:hover { background: #030303; }
+
+    /* CEO PROFILE */
+    .ceo-card {
+      margin-top: 10px;
+    }
+    .ceo-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid  #3E2723;;
+      object-fit: cover;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .ceo-img:hover {
+      transform: scale(1.1);
+      border-color:  black;
+      box-shadow: 0 0 15px rgba(76,175,80,0.6);
+    }
+    .ceo-name {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .ceo-title {
+      color: Grey;
+      font-size: 13px;
+    }
+
+    /* MODAL POPUP */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from {opacity:0; transform:scale(0.9);} to {opacity:1; transform:scale(1);} }
+    .modal-content img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #0c0b0b;
+    }
+    .modal-content h2 { color: #3E2723; margin-bottom: 5px; }
+    .modal-content h4 { color:  Grey;; margin-bottom: 15px; }
+    .modal-content p { color: #333; font-size: 14px; line-height: 1.6; }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+    .close:hover { color: #4CAF50; }
+
+        /* BUTTONS SECTION */
+  .cta-buttons {
+    text-align: center;
+    margin: 40px 0 20px;
+  }
+  .tab-btn {
+    background: #3E2723;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: 0.3s;
+  }
+  .tab-btn:hover, .tab-btn.active { background: #0b0c0b; transform: scale(1.05); }
+
+  /* SERVICES SECTION - HIDDEN BY DEFAULT */
+  .services-section {
+    display: none;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+    animation: fadeIn 0.5s ease;
+  }
+  @keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+  .services-title {
+    text-align: center;
+    font-size: 32px;
+    color: #3E2723;
+    margin-bottom: 30px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  .service-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid #3E2723;;
+    transition: 0.3s;
+  }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+  
+  .service-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+  .service-card h3 {
+    color: #3E2723;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  .service-card p, .service-card ul {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .service-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 8px;
+  }
+  .service-card ul li {
+    padding: 5px 0 5px 20px;
+    position: relative;
+  }
+  .service-card ul li:before {
+    content: "✓";
+    color: #4CAF50;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+ .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.3s;
+  }
+  @keyframes slideUp { from {transform:translateY(30px); opacity:0;} to {transform:translateY(0); opacity:1;} }
+
+ .modal-img {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #4CAF50;
+    margin-bottom: 15px;
+  }
+ .modal-name { font-size: 22px; color: #3E2723; font-weight: 700; }
+ .modal-role { font-size: 15px; color: #4CAF50; margin-bottom: 15px; }
+ .modal-bio { font-size: 14px; color: #555; line-height: 1.7; text-align: left; }
+
+ .close-btn {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+    font-weight: bold;
+  }
+ .close-btn:hover { color: #3E2723; }
+
+    /* CONTACT BAR */
+    .contact-bar {
+     background: #3E2723;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      word-wrap: break-word;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #212121;
+      color: #fff;
+      padding: 30px 50px;
+      text-align: center;
+    }
+    footer .logo-footer { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+    footer .logo-footer img { width: 45px; border-radius: 50%; }
+    .socials { margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .socials a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .socials a:hover { color: blue; }
+    footer p { font-size: 13px; color: #ccc; }
+
+    @media (max-width: 768px) {
+      header{
+        padding: 15px 20px;
+        justify-content: center;
+        gap: 10px;
+      }
+      .logo {font-size: 18px;}
+      .logo img {width: 35px; height: 35px;}
+
+      nav {gap: 15px; font-size: 14px;}
+      .slider, .slides img {height: 400px;}
+
+      .hero-text {
+        padding: 20px;
+        width: 95%;
+      }
+      .hero-text h1 {font-size: 28px;}
+      .hero-text p {font-size: 15px;}
+      .btn {padding: 12px 25px; font-size: 14px;}
+
+      .ceo-img {width: 70px; height: 70px;}
+      .contact-bar {font-size: 12px;}
+
+      footer {padding: 30px 20px;}
+      .socials {gap: 15px; font-size: 14px;}
+
+      @media (max-width: 480px) {
+        .hero-text h1 {font-size: 24px;}
+        nav {gap: 10px;}
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="IMG-20260904-WA0025.jpg" alt="Fungitech Logo">
+      <span>FUNGITECH</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="About Us.html">About Us</a>
+      <a href="Products.html">Products</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- SLIDER WITH 5 PICTURES -->
+  <section class="slider">
+    <div class="slides">
+      <img src="IMG-20260817-WA0027.jpg" alt="Oyster Mushrooms">
+      <img src="IMG-20260817-WA0008.jpg" alt="Button Mushrooms">
+      <img src="IMG-20260817-WA0007.jpg" alt="Mushroom Farm">
+      <img src="IMG-20260817-WA0027.jpg" alt="Training Session">
+      <img src="IMG-20260817-WA0029.jpg" alt="Fresh Harvest">
+    </div>
+    <div class="hero-text">
+      <h1>Grow Fresh. Eat Healthy.</h1>
+      <p>Zimbabwe's leading supplier of premium oyster and button mushrooms</p>
+      <a href="https://www.facebook.com/FungiTechMushrooms" class="btn">Get More!</a>
+
+      <!-- CEO PROFILE ADDED BELOW BUTTON -->
+      <div class="ceo-card">
+        <img src="IMG-20260902-WA0046.jpg" alt="CEO Photo" class="ceo-img" onclick="openModal()">
+        <div class="ceo-name">Tatenda Gumbo</div>
+        <div class="ceo-title">C.E.O</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEO MODAL POPUP -->
+  <div id="ceoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img src="IMG-20260902-WA0046.jpg" alt="CEO Photo">
+      <h2>Tatenda Gumbo</h2>
+      <h4>C.E.O - FUNGITECH</h4>
+      <p><b>Experience:</b> 3+ Years in Mushroom Farming & Training</p>
+      <p><b>Vision:</b> "Empowering Zimbabwe with skills and healthy food through sustainable mushroom farming."</p>
+      <p><b>Email:</b> tatendagumb2@gmail.com</p>
+      <p><b>Phone:</b> +263 785 453 982</p>
+    </div>
+  </div>
+
+     <!-- BUTTONS -->
+  <div class="cta-buttons">
+    <button class="tab-btn" onclick="showSection('who')">Who we are?</button>
+    <button class="tab-btn" onclick="showSection('what')">What we do?</button>
+  </div>
+
+  <!-- WHAT WE DO SECTION -->
+  <section id="what-section" class="services-section" style="display:block;">
+    <h2 class="services-title">Our Services</h2>
+    <div class="services-grid">
+      
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>1. Consultation</h3>
+        <p>Professional expert advice on mushroom farming, setup, and business planning to help you start and grow successfully.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3>2. Training</h3>
+        <p>Hands-on practical training programs tailored for all levels:</p>
+        <ul>
+          <li>One on one sessions</li>
+          <li>Group sessions</li>
+          <li>Church sessions</li>
+          <li>Community sessions</li>
+          <li>And more</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>3. Project Monitoring</h3>
+        <p>We track and evaluate your mushroom projects to ensure growth, quality control, and maximum yield at every stage.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>4. Project Management</h3>
+        <p>End-to-end management of your mushroom projects from planning, resources, to execution and delivery.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>5. Project Troubleshooting</h3>
+        <p>Fast solutions for contamination, low yields, pests, and technical problems to get your farm back on track.</p>
+      </div>
+
+    </div>
+  </section>
+
+   <!-- WHO WE ARE SECTION - Example placeholder -->
+  <section id="who-section" class="services-section">
+    <h2 class="services-title">FUNGITECH MUSHROOMS</h2>
+    <p style="text-align:center; max-width:700px; margin:0 auto; font-size:16px;">
+      FUNGITECH is Zimbabwe's leading supplier of premium oyster and button mushrooms. 
+      We are committed to Training, Support, and Innovation to empower communities through sustainable mushroom farming.
+    </p>
+
+      
+  <!-- MODAL POPUP -->
+  <div id="teamModal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="" class="modal-img">
+      <h3 id="modalName" class="modal-name"></h3>
+      <p id="modalRole" class="modal-role"></p>
+      <p id="modalBio" class="modal-bio"></p>
+    </div>
+  </section>
+
+      <!--CONTACT INFO BAR-->
+  <div class="contact-bar">
+    📍 INKOMO FARM, Harare, Zimbabwe | 📞 +263 785 453 982 | ✉️ tatendagumb2@gmail.com
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo-footer">
+      <img src="IMG-20260904-WA0025.jpg" alt="Fungitech Logo">
+      <h3>FUNGITECH MUSHROOMS</h3>
+    </div>
+    <p>Training | Support | Innovation</p>
+    
+    <div class="socials">
+      <a href="https://www.facebook.com/FungiTechMushrooms" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@fungitech_mushrooms_co" target="_blank">TikTok</a>
+      <a href="https://whatsapp.com/channel/0029VaKz2jcGufIzAN1phi0D" target="_blank">WhatsApp Channel</a>
+    </div>
+    <p>© 2026 FUNGITECH. All Rights Reserved.</p>
+  </footer>
+
+    <script>
+  // Admin data - EDIT THIS WITH YOUR REAL TEAM
+  const teamData = {
+    tatenda: {
+      name: "Tatenda Gumbo",
+      role: "CEO & Founder",
+      img: "tatenda.jpg",
+      bio: "Tatenda is the visionary behind FUNGITECH. With over 8 years in mushroom farming, he is committed to empowering Zimbabwean communities through training, quality spawn, and sustainable farming. He oversees all strategy, partnerships, and innovation at FUNGITECH."
+    },
+    ops: {
+      name: "Rudo Chikafu",
+      role: "Operations Manager",
+      img: "admin2.jpg",
+      bio: "Rudo manages daily farm operations. She ensures quality control from spawn production to harvesting and packing. She coordinates the production team and maintains farm hygiene and efficiency standards."
+    },
+    training: {
+      name: "Farai Moyo",
+      role: "Head of Training",
+      img: "admin3.jpg",
+      bio: "Farai leads all training programs: One-on-one, Group, Church, and Community sessions. He travels across Zimbabwe to teach best practices in mushroom cultivation, project management, and troubleshooting."
+    },
+    sales: {
+      name: "Tariro Dube",
+      role: "Sales & Marketing Manager",
+      img: "admin4.jpg",
+      bio: "Tariro handles all product sales, customer relations, and marketing. She manages orders for spawn, substrates, kits, and machines. She also runs the WhatsApp and social media channels for FUNGITECH."
+    }
+  };
+
+  function openModal(person) {
+    const data = teamData[person];
+    document.getElementById('modalImg').src = data.img;
+    document.getElementById('modalName').innerText = data.name;
+    document.getElementById('modalRole').innerText = data.role;
+    document.getElementById('modalBio').innerText = data.bio;
+    document.getElementById('teammodal').style.display  = 'flex';
+  }
+  function closeModal() {
+    document.getElementById('teammodal').style.display = 'none';
+  }
+</script>
+
+  <script>
+  function showSection(section) {
+    document.getElementById('who-section').style.display = 'none';
+    document.getElementById('what-section').style.display = 'none';
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+    if(section === 'who') {
+      document.getElementById('who-section').style.display = 'block';
+      document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+    } else {
+      document.getElementById('what-section').style.display = 'block';
+      document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+    }
+  }
+</script>
+
+  <!-- JAVASCRIPT FOR MODAL -->
+  <script>
+    function openModal() {
+      document.getElementById("ceoModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("ceoModal").style.display = "none";
+    }
+    // Close modal if click outside
+    window.onclick = function(event) {
+      if (event.target == document.getElementById("ceoModal")) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
